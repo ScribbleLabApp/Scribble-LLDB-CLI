@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+require 'optparse'
 require_relative 'colors'
 require_relative 'installer'
 require_relative 'linter'
@@ -60,27 +61,73 @@ def lint
 end
 
 # Parse command line arguments
-if ARGV.empty?
+# if ARGV.empty?
   usage
-else
-  case ARGV[0]
-  when "-h", "--help"
+# else
+#   case ARGV[0]
+#   when "-h", "--help"
+#     usage
+#   when "-V", "--version"
+#     version
+#   when "-c", "--copyright"
+#     copyright
+#   when "--install"
+#     install
+#   when "--list"
+#     list
+#   when "--update"
+#     update
+#   when "-l", "--lint"
+#     lint
+#   else
+#     puts "Unknown option: #{ARGV[0]}".red.bold
+#     puts "\n"
+#     usage
+#   end
+# end
+
+options = {}
+OptionParser.new do |opts|
+  opts.banner = "OVERVIEW: A set of command line tools that ship with ScribbleLab"
+  opts.banner += "which allow users to create and debug custom Plug-In's and extensions."
+  opts.banner += "\n\n"
+  opts.banner += "Version: 0.0.1-dev".bold
+  opts.banner += "\n\n"
+  opts.banner += "Usage: scribble [option] [flag]"
+  opts.banner += "\n\n"
+
+  opts.on("-h", "--help", "Show this message") do
     usage
-  when "-V", "--version"
-    version
-  when "-c", "--copyright"
-    copyright
-  when "--install"
-    install
-  when "--list"
-    list
-  when "--update"
-    update
-  when "-l", "--lint"
-    lint
-  else
-    puts "Unknown option: #{ARGV[0]}".red.bold
-    puts "\n"
-    usage
+    exit
   end
-end
+
+  opts.on("-V", "--version", "Show version information") do
+    version
+    exit
+  end
+
+  opts.on("-c", "--copyright", "Show copyright notice") do
+    copyright
+    exit
+  end
+
+  opts.on("--list", "List ScribbleLabApp Programm versions") do
+    list
+    exit
+  end
+
+  opts.on("--install", "Install ScribbleLab") do
+    install
+    exit
+  end
+
+  opts.on("--update", "Update ScribbleLab") do
+    update
+    exit
+  end
+
+  opts.on("-l", "--lint", "Lint project code") do
+    lint
+    exit
+  end
+end.parse!
