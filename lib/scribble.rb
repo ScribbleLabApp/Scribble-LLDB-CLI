@@ -4,6 +4,7 @@ require 'optparse'
 require_relative 'colors'
 require_relative 'installer'
 require_relative 'linter'
+require_relative 'open'
 
 $cli_version = "0.0.1-dev"
 $scribblelab_version = "n/a"
@@ -12,11 +13,14 @@ def usage
   puts "OVERVIEW: A set of command line tools that ship with ScribbleLab"
   puts "which allow users to create and debug custom Plug-In's and extensions."
   puts "\n"
-  puts "Version: 0.0.1-dev".bold
+  puts "Version:".bold.underline + " 0.0.1-dev".bold
   puts "\n"
-  puts "Usage: scribble [option] [flag]"
+  puts "Usage:".bold.underline + " scribble [option] [flag]"
   puts "\n"
   puts "Options:".bold.underline
+  puts "  create          Create a new plugin from template"
+  puts "  open [name]     Open Plug-In's dir and launch ScribbleEditor"
+  puts "  test            Run Unit Tests for your plugin"
   puts "  -h, --help      Show this message"
   puts "  -V, --version   Show version information"
   puts "  -v, --verbose   Make some output more verbose."
@@ -28,6 +32,7 @@ def usage
   puts "  --update        Update ScribbleLab"
   puts "\n"
   puts "See 'scribble help [option]' for detailed help."
+  puts "\n"
 end
 
 def version
@@ -60,32 +65,11 @@ def lint
   "".lint_code
 end
 
-# Parse command line arguments
-# if ARGV.empty?
-  usage
-# else
-#   case ARGV[0]
-#   when "-h", "--help"
-#     usage
-#   when "-V", "--version"
-#     version
-#   when "-c", "--copyright"
-#     copyright
-#   when "--install"
-#     install
-#   when "--list"
-#     list
-#   when "--update"
-#     update
-#   when "-l", "--lint"
-#     lint
-#   else
-#     puts "Unknown option: #{ARGV[0]}".red.bold
-#     puts "\n"
-#     usage
-#   end
-# end
+def openPr
+  "".openProject
+end
 
+# ARGV Praser
 options = {}
 OptionParser.new do |opts|
   opts.banner = "OVERVIEW: A set of command line tools that ship with ScribbleLab"
@@ -130,4 +114,34 @@ OptionParser.new do |opts|
     lint
     exit
   end
+
+  opts.on("create", "Create a new plugin from template") do
+    # Define what happens when "--create" option is specified
+    # For example:
+    # create_plugin
+    exit
+  end
+
+  opts.on("open", "Open Plug-In's dir and launch ScribbleEditor") do |name|
+    # Define what happens when "--open" option is specified
+    # The argument 'name' will contain the value passed after "--open"
+    # For example:
+    # open_project(name)
+    # cmd: open [name]
+    open_project
+    exit
+  end
+
+  opts.on("test", "Run Unit Tests for your plugin") do
+    # Define what happens when "--test" option is specified
+    # For example:
+    # run_tests
+    exit
+  end
 end.parse!
+
+if ARGV.empty? || !["create", "open", "test"].include?(ARGV.first)
+  puts "Error:".red.bold + " Unrecognized command '#{ARGV.first}'. Please provide a valid command."
+  puts "Use 'scribble --help' for usage instructions."
+  exit 1
+end
