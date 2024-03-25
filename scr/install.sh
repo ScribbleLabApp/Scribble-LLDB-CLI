@@ -3,8 +3,8 @@
 # Global definitions:
 #  - Scribble CLI version
 #  - URL of tar gz
-VERSION="0.0.1-dev"
-URL="https://example.com/scribble-${VERSION}.tar.gz" # Update with correct URL
+VERSION="0.0.1-alpha"
+URL="https://github.com/ScribbleLabApp/ScribbleDeveloper-CLI/releases/tag/${VERSION}.tar.gz"
 
 # Check for superuser privileges
 if [ "$EUID" -ne 0 ]; then
