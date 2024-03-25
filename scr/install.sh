@@ -3,7 +3,7 @@
 # Global definitions:
 #  - Scribble CLI version
 #  - URL of tar gz
-VERSION="0.0.1-alpha"
+VERSION="0.0.1.1-alpha"
 URL="https://github.com/ScribbleLabApp/ScribbleDeveloper-CLI/releases/tag/${VERSION}.tar.gz"
 
 # Check for superuser privileges
