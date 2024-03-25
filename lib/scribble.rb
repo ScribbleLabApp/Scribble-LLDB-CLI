@@ -5,6 +5,7 @@ require_relative 'colors'
 require_relative 'installer'
 require_relative 'linter'
 require_relative 'open'
+require_relative 'update_tools'
 
 $cli_version = "0.0.1-dev"
 $scribblelab_version = "n/a"
@@ -29,7 +30,7 @@ def usage
   puts "  --list          List ScribbleLabApp Programm versions"
   puts "  --copyright     Shows copyright notice"
   puts "  --install       Install ScribbleLab & ScribbleDeveloper"
-  puts "  --update        Update ScribbleLab & ScribbleDeveloper"
+  puts "  --update        Update scribble-cli"
   puts "\n"
   puts "See 'scribble help [option]' for detailed help."
   puts "\n"
@@ -55,10 +56,11 @@ def install
 end
 
 def update
-  puts "==>".green + " ScribbleLab is already up to date 🎊".bold
-  puts "\n"
-  puts "To check ScribbleLab's version number, run:"
-  puts "  scribble --version"
+  # puts "==>".green + " ScribbleLab is already up to date 🎊".bold
+  # puts "\n"
+  # puts "To check ScribbleLab's version number, run:"
+  # puts "  scribble --version"
+  "".update_scribble
 end
 
 def lint
