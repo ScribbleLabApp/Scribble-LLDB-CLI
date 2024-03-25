@@ -6,6 +6,7 @@ require_relative 'installer'
 require_relative 'linter'
 require_relative 'open'
 require_relative 'update_tools'
+require_relative 'uninstall'
 
 $cli_version_file = File.expand_path('../data/version.txt', __dir__)
 $cli_version = File.read($cli_version_file).strip
@@ -32,6 +33,7 @@ def usage
   puts "  --copyright     Shows copyright notice"
   puts "  --install       Install ScribbleLab & ScribbleDeveloper"
   puts "  --update        Update scribble-cli"
+  puts "  --uninstall     Uninstall scribble-cli"
   puts "\n"
   puts "See 'scribble help [option]' for detailed help."
   puts "\n"
@@ -69,6 +71,10 @@ end
 
 def openPr
   "".openProject
+end
+
+def uninstall
+  puts "DEBUG"
 end
 
 # ARGV Praser
@@ -138,6 +144,11 @@ OptionParser.new do |opts|
     # Define what happens when "--test" option is specified
     # For example:
     # run_tests
+    exit
+  end
+
+  opts.on("--uninstall", "Uninstall scribble-cli") do
+    uninstall
     exit
   end
 end.parse!
