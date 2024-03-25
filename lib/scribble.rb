@@ -74,7 +74,7 @@ def openPr
 end
 
 def uninstall
-  puts "DEBUG"
+  "".uninstall_scribble
 end
 
 # ARGV Praser

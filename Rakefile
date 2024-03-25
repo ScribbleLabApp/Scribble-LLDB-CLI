@@ -26,7 +26,7 @@ task :compile do
   end
 
   # Copy necessary files to the bin directory
-  %w(colors linter open installer update_tools).each do |file|
+  %w(colors linter open installer update_tools uninstall).each do |file|
     FileUtils.cp("lib/#{file}.rb", "bin/#{file}.rb")
   end
 end

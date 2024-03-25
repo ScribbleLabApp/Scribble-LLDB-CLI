@@ -6,6 +6,7 @@ require_relative 'installer'
 require_relative 'linter'
 require_relative 'open'
 require_relative 'update_tools'
+require_relative 'uninstall'
 
 $cli_version_file = File.expand_path('../data/version.txt', __dir__)
 $cli_version = File.read($cli_version_file).strip
@@ -73,7 +74,7 @@ def openPr
 end
 
 def uninstall
-  puts "DEBUG"
+  "".uninstall_scribble
 end
 
 # ARGV Praser
