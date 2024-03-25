@@ -15,7 +15,7 @@ def usage
   puts "OVERVIEW: A set of command line tools that ship with ScribbleLab"
   puts "which allow users to create and debug custom Plug-In's and extensions."
   puts "\n"
-  puts "Version:".bold.underline + " 0.0.1-dev".bold
+  puts "Version:".bold.underline + " #{$cli_version}".bold
   puts "\n"
   puts "Usage:".bold.underline + " scribble [option] [flag]"
   puts "\n"
@@ -77,7 +77,7 @@ OptionParser.new do |opts|
   opts.banner = "OVERVIEW: A set of command line tools that ship with ScribbleLab"
   opts.banner += "which allow users to create and debug custom Plug-In's and extensions."
   opts.banner += "\n\n"
-  opts.banner += "Version: 0.0.1-dev".bold
+  opts.banner += "Version: DEBUG".bold
   opts.banner += "\n\n"
   opts.banner += "Usage: scribble [option] [flag]"
   opts.banner += "\n\n"
