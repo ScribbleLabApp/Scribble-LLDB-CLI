@@ -7,8 +7,9 @@ require_relative 'linter'
 require_relative 'open'
 require_relative 'update_tools'
 
-$cli_version = "0.0.1-dev"
-$scribblelab_version = "n/a"
+$cli_version_file = File.expand_path('../data/version.txt', __dir__)
+$cli_version = File.read($cli_version_file).strip
+$cli_version = "Unknown" if $cli_version.empty? || !File.exist?($cli_version_file)
 
 def usage
   puts "OVERVIEW: A set of command line tools that ship with ScribbleLab"
@@ -40,7 +41,6 @@ def version
     puts "==>".blue + " Check version information for ScribbleLab..."
     puts "\n"
     puts "ScribbleLab CLI #{$cli_version} ✨".bold
-    puts "ScribbleLab #{$scribblelab_version} ✨".bold
 end
 
 def copyright
