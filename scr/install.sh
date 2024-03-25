@@ -3,13 +3,13 @@
 # Global definitions:
 #  - Scribble CLI version
 #  - URL of tar gz
-VERSION="0.0.1.1-alpha"
+VERSION="0.0.1.2-alpha"
 URL="https://github.com/ScribbleLabApp/ScribbleDeveloper-CLI/releases/tag/${VERSION}.tar.gz"
 
 # Check for superuser privileges
 if [ "$EUID" -ne 0 ]; then
     echo "Please run the ScribbleDeveloper-CLI Installer with superuser privileges. [ERR]"
-    echo "==> Installation was unsuccessful."
+    echo "==> Installation was interrupted. Finished with exit code 1."
     exit 1
 fi
 
@@ -30,8 +30,6 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
             echo "==> Installing Apple Command Line Tools..."
             echo "Waiting for confirmation from xcode-select.."
             xcode-select --install
-            echo "Please install the Command Line Tools, then run the installer again."
-            exit 0
         else
             echo "Installation canceled. Exiting."
             exit 1
