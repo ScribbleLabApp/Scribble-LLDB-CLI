@@ -22,21 +22,20 @@ task :default => :compile
 
 task :compile do
   Dir.glob('lib/**/*.rb').each do |file|
-    # Compile each Ruby file in the lib folder
     compile_ruby_file(file)
+  end
+
+  # Copy necessary files to the bin directory
+  %w(colors linter open installer).each do |file|
+    FileUtils.cp("lib/#{file}.rb", "bin/#{file}.rb")
   end
 end
 
 def compile_ruby_file(file)
-  # You can perform any compilation steps here
-  # For example, you might want to load the file and check for syntax errors
-  # Or you might want to simply print a message indicating the file is being compiled
   puts "Compiling #{file}"
 
-  # Example: Copy the compiled binary to the bin directory
-  # Change this part according to your compilation process
+  # Copy the compiled file to the bin directory
   output_file = file.gsub(/^lib\//, 'bin/').gsub(/\.rb$/, '')
   FileUtils.mkdir_p(File.dirname(output_file))
   FileUtils.cp(file, output_file)
 end
-
