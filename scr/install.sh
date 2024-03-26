@@ -15,7 +15,7 @@ get_download_url() {
 # Check for superuser privileges
 if [ "$EUID" -ne 0 ]; then
     echo "Please run the ScribbleDeveloper-CLI Installer with superuser privileges. [ERR]"
-    echo "==> Installation was interrupted. Finished with exit code 1."
+    echo "==> Installation was interrupted. Finished with exit code 200."
     exit 200
 fi
 

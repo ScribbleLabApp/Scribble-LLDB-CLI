@@ -25,3 +25,6 @@ Alternatively, you can install Scribble CLI using `curl` by running the followin
 
 ### 3. Using universal binary 
 Download the universal binary from the latest release, extract the zip and move it to /usr/local/bin/.
+
+## Troubleshooting
+For troubleshooting common issues, refer to the [Troubleshooting guide](docs/Troubleshooting.md).
