@@ -20,7 +20,7 @@ brew install scribble-cli
 Alternatively, you can install Scribble CLI using `curl` by running the following command:
 
 ```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/ScribbleLabApp/ScribbleDeveloper-CLI/main/scr/install.sh)"
+sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/ScribbleLabApp/ScribbleDeveloper-CLI/main/scr/install.sh)"
 ```
 
 ### 3. Using universal binary 
