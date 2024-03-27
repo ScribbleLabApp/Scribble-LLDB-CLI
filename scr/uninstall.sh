@@ -46,25 +46,39 @@ if [[ "$confirm" =~ ^[Yy]$ ]]; then
     echo "==> Scribble CLI found at $INSTALL_PATH"
   else
     echo "${BOLD}${RED}ERROR:${RESET}${RESET_B} Scribble CLI not found at $INSTALL_PATH. Exiting..."
-    exit 1
+    exit 203
   fi
 
   read -p "Are you sure to uninstall scribble-cli? You can't revert your changes. (y/n): " confirmation
 
   if [[ "$confirmation" =~ ^[Yy]$ ]]; then
     echo "==> Remove scribble-cli from system"
-    rm -rf "$INSTALL_PATH"
+    sudo rm -rf "$INSTALL_PATH"
+
+    if [ $? -ne 0 ]; then
+      echo "[ERROR]: Failed to remove scribble-cli from INSTALL_PATH (/usr/local/bin)"
+      echo "Failed with nonzero exit code 240"
+      exit 240
+    fi
 
     echo "==> Cleaning up..."
     echo "The following command should not give any output output."
-    which scribble
+    if scribble --help >/dev/null 2>&1; then
+      echo "Scribble command found. Uninstallation experienced an unknown issue."
+      echo "Failed with nonzero exit code 250"
+      exit 250
+    else
+      echo "Scribble command not found. Uninstaller exiting..."
+      echo "Exiting with exit code 0. SUCCESS 🎊✅"
+      exit 0
+    fi
     
     exit 0
   else
     echo "Deinstallation was interupted!"
-    exit 0
+    exit 1
   fi
 else
   echo "Deinstallation was interupted!"
-  exit 0
+  exit 1
 fi
