@@ -23,8 +23,8 @@ if [ "$EUID" -ne 0 ]; then
 
   echo "    ${UNDERLINE}https://github.com/ScribbleLabApp/ScribbleDeveloper-CLI"${RESET_U}
 
-  echo -e "${BOLD}Deinstallation was interupted! Finished with exit code 1.${RESET_B}"
-  exit 1
+  echo -e "${BOLD}Deinstallation was interupted! Finished with exit code 200.${RESET_B}"
+  exit 200
 fi
 
 ###########################################################################################################

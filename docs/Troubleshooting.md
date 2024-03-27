@@ -68,6 +68,16 @@ This guide provides solutions to common issues encountered while using the Scrib
 
 --- 
 
+## Issue: Failed to Locate Scribble-CLI on System (`/usr/local/bin`)
+
+|                    |                                                                                                                |
+| ------------------ | -------------------------------------------------------------------------------------------------------------- |
+| **Error Message:** | "Failed to locate Scribble-CLI on your system."                                                                |
+| **Exit Code:**     |  203 (see also 200)                                                                                            |
+| **Meaning:**       | The script was unable to locate the Scribble-CLI executable on your system. This could be due to the Scribble-CLI not being installed or not being properly configured in your system's PATH environment variable. Ensure that Scribble-CLI is correctly installed and configured, and that your PATH variable includes the directory containing the Scribble-CLI executable.                                                                                                                           |
+
+---
+
 ## Issue: Failed to Clean Up Installation Files
 
 |                    |                                                                                                                |
@@ -77,5 +87,26 @@ This guide provides solutions to common issues encountered while using the Scrib
 | **Meaning:**       | The script failed to clean up temporary installation files. This could be due to permission issues or file system errors. Manually remove the temporary files and retry the installation.                                                               |
 
 ---
+
+## Issue: Failed to Remove Scribble-CLI from System
+
+|                    |                                                                                                                |
+| ------------------ | -------------------------------------------------------------------------------------------------------------- |
+| **Error Message:** | "Failed to remove scribble-cli from INSTALL_PATH (`/usr/local/bin`)."                                           |
+| **Exit Code:**     | 240 (see also 200)                                                                                             |
+| **Meaning:**       | The uninstallation script attempted to remove the Scribble-CLI executable from the system-wide location (`/usr/local/bin`), but the operation was unsuccessful. This failure could be due to permission issues or file system errors. As a result, the temporary installation files remain in the system. To resolve this issue, manually remove the Scribble-CLI executable and associated files from the specified installation path and retry the uninstallation process.                                                                   |
+
+---
+
+## Issue: Scribble Command Produces Unexpected Output
+
+|                    |                                                                                                                |
+| ------------------ | -------------------------------------------------------------------------------------------------------------- |
+| **Error Message:** | "Scribble command found. Un-/Installation experienced an unknown issue."                                         |
+| **Exit Code:**     |  250                                                                                                           |
+| **Meaning:**       | The Un-/Installation script attempted to execute the Scribble command (`scribble --help`) to check if it exists. However, the command produced unexpected output, indicating an unknown issue with the Scribble command execution. As a result, the uninstallation process cannot proceed safely, and it terminates with exit code 250. This could be due to misconfiguration, missing dependencies, or other issues related to the Scribble command execution. Please investigate the cause of the unexpected output and retry the uninstallation process.                                                       |
+
+---
+
 
 If you encounter any other issues not listed here or require further assistance, please contact <!--support@scribblelab.com--> scribblelabapp.dev@gmail for additional help.
